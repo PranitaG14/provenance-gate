@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hash the reviewed source and compare the claimed artifact with an independent rebuild.">
+  <title>Provenance Gate · Working Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#results">Skip to results</a>
+  <header class="masthead"><a class="brand" href="https://github.com/PranitaG14/provenance-gate">Provenance Gate</a><span class="build-state"><i></i> live computation</span></header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow">Reproducible build verifier</p>
+      <h1>Run the decision,<br><em>inspect the evidence.</em></h1>
+      <p class="lede">Hash the reviewed source and compare the claimed artifact with an independent rebuild.</p>
+    </section>
+    <section class="workspace" aria-label="Interactive project workspace">
+      <form id="workspace-form" class="control-panel">
+        <div class="panel-heading"><span>01</span><div><p>Inputs</p><h2>Configure the run</h2></div></div>
+        <div class="fields"><label class="field" for="source"><span>Reviewed source</span><textarea id="source" name="source" rows="8">export function total(a,b){return a+b}
+</textarea></label>
+<label class="field" for="recipe"><span>Build recipe</span><textarea id="recipe" name="recipe" rows="5">node 24; npm ci; npm run build</textarea></label>
+<label class="field" for="claimedArtifact"><span>Published artifact</span><textarea id="claimedArtifact" name="claimedArtifact" rows="5">bundle:v1:total(a,b)=a+b</textarea></label>
+<label class="field" for="rebuiltArtifact"><span>Independent rebuild</span><textarea id="rebuiltArtifact" name="rebuiltArtifact" rows="5">bundle:v1:total(a,b)=a+b</textarea></label></div>
+        <div class="actions"><button class="run" type="submit">Run analysis <span>→</span></button><button id="reset-button" class="reset" type="button">Reset</button></div>
+      </form>
+      <section id="results" class="result-panel" aria-live="polite" aria-busy="true">
+        <div class="panel-heading"><span>02</span><div><p>Output</p><h2>Decision trace</h2></div></div>
+        <div id="result-content" class="result-content"><div class="loading">Computing initial scenario…</div></div>
+      </section>
+    </section>
+  </main>
+  <footer><p>Built from the tested logic in <a href="https://github.com/PranitaG14/provenance-gate">PranitaG14/provenance-gate</a>.</p></footer>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
